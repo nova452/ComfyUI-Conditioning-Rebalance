@@ -1,12 +1,18 @@
 import torch
 
 
-def _scale_cond_tensor(t: torch.Tensor, multiplier, per_layer_weights=None):
+def _scale_cond_tensor(t: torch.Tensor, multiplier, per_layer_weights=None, renormalize=False):
     """Scale a conditioning tensor, optionally with per-layer weighting.
 
     Krea2 conditioning arrives as (B, seq, 12*2560) — the 12 Qwen3-VL taps flattened
     into the feature dim.  When per_layer_weights is given we reshape to
     (B, seq, 12, D), apply a different gain to each tap and flatten back.
+
+    When renormalize is True the output is rescaled so its RMS matches the input, so the
+    per-layer ratios change without inflating the overall conditioning magnitude. This
+    avoids the quality collapse (loss of likeness / prompt adherence, oversaturated
+    colour) that a large global multiplier causes by amplifying every tap at once. With
+    renormalize on, the global multiplier becomes the sole magnitude control.
     """
     if per_layer_weights is None:
         return t * multiplier
@@ -16,11 +22,16 @@ def _scale_cond_tensor(t: torch.Tensor, multiplier, per_layer_weights=None):
     if n_layers > 1 and flat % n_layers == 0:
         layer_dim = flat // n_layers
         orig_dtype = t.dtype
+        ref_rms = (t.float().pow(2).mean(dim=tuple(range(1, t.dim()))).sqrt()
+                   if renormalize else None)
         t = t.float()
         t = t.view(*t.shape[:-1], n_layers, layer_dim)
         gains = torch.tensor(per_layer_weights, dtype=t.dtype, device=t.device)
         t = t * gains.view(*([1] * (t.dim() - 2)), n_layers, 1)
         t = t.view(*t.shape[:-2], flat)
+        if renormalize and ref_rms is not None:
+            new_rms = t.pow(2).mean(dim=tuple(range(1, t.dim()))).sqrt().clamp_min(1e-8)
+            t = t * (ref_rms / new_rms).view(-1, *([1] * (t.dim() - 1)))
         return t.to(orig_dtype) * multiplier
     return t * multiplier
 
@@ -41,7 +52,7 @@ def _parse_per_layer(s: str):
     return vals
 
 
-def scale_conditioning(structure, multiplier, per_layer_weights=None):
+def scale_conditioning(structure, multiplier, per_layer_weights=None, renormalize=False):
     """leaving masks / pooled output intact."""
     if isinstance(structure, list):
         out = []
@@ -49,15 +60,15 @@ def scale_conditioning(structure, multiplier, per_layer_weights=None):
             if isinstance(item, (list, tuple)) and len(item) == 2 \
                     and isinstance(item[0], torch.Tensor) and isinstance(item[1], dict):
                 cond_t, extras = item
-                new_cond = _scale_cond_tensor(cond_t, multiplier, per_layer_weights)
+                new_cond = _scale_cond_tensor(cond_t, multiplier, per_layer_weights, renormalize)
                 out.append([new_cond, dict(extras)])
             else:
-                out.append(scale_conditioning(item, multiplier, per_layer_weights))
+                out.append(scale_conditioning(item, multiplier, per_layer_weights, renormalize))
         return out
     if isinstance(structure, torch.Tensor):
-        return _scale_cond_tensor(structure, multiplier, per_layer_weights)
+        return _scale_cond_tensor(structure, multiplier, per_layer_weights, renormalize)
     if isinstance(structure, dict):
-        return {k: scale_conditioning(v, multiplier, per_layer_weights)
+        return {k: scale_conditioning(v, multiplier, per_layer_weights, renormalize)
                 for k, v in structure.items()}
     return structure
 
@@ -72,6 +83,7 @@ class ConditioningKrea2Rebalance:
             "conditioning": ("CONDITIONING",),
             "multiplier": ("FLOAT", {"default": 4.0, "min": -1000000000.0, "max": 1000000000.0, "step": 0.01}),
             "per_layer_weights": ("STRING", {"default": cls.DEFAULT_WEIGHTS, "multiline": False}),
+            "renormalize": ("BOOLEAN", {"default": False}),
         }}
 
     RETURN_TYPES = ("CONDITIONING",)
@@ -79,7 +91,7 @@ class ConditioningKrea2Rebalance:
     FUNCTION = "main"
     CATEGORY = "conditioning"
 
-    def main(self, conditioning, multiplier, per_layer_weights=None):
+    def main(self, conditioning, multiplier, per_layer_weights=None, renormalize=False):
         plw = _parse_per_layer(per_layer_weights) if per_layer_weights else None
-        c = scale_conditioning(conditioning, multiplier, per_layer_weights=plw)
+        c = scale_conditioning(conditioning, multiplier, per_layer_weights=plw, renormalize=renormalize)
         return (c,)
