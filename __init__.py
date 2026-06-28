@@ -1,16 +1,28 @@
-from .conditioning_rebalance import ConditioningKrea2Rebalance
-from .image_edit_encode_rebalance import Krea2EditRebalance, Krea2EditRebalanceC
+from .conditioning_rebalance import (
+    ConditioningKrea2Rebalance,
+    Krea2EditRebalance,
+    Krea2EncodeRebalance,
+    RebalanceGuider,
+    StepRebalance,
+    RebalanceCFG,
+)
 
 NODE_CLASS_MAPPINGS = {
     "ConditioningKrea2Rebalance": ConditioningKrea2Rebalance,
     "Krea2EditRebalance": Krea2EditRebalance,
-    "Krea2EditRebalanceC": Krea2EditRebalanceC,
+    "Krea2EncodeRebalance": Krea2EncodeRebalance,
+    "RebalanceGuider": RebalanceGuider,
+    "StepRebalance": StepRebalance,
+    "RebalanceCFG": RebalanceCFG,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "ConditioningKrea2Rebalance": "Conditioning Krea2 Rebalance",
     "Krea2EditRebalance": "Krea 2 Image Edit Rebalance",
-    "Krea2EditRebalanceC": "Krea 2 Image Edit Rebalance C.",
+    "Krea2EncodeRebalance": "Krea 2 Encode Rebalance",
+    "RebalanceGuider": "Rebalance Guider",
+    "StepRebalance": "Step Rebalance",
+    "RebalanceCFG": "Rebalance CFG Custom",
 }
 
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]

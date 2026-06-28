@@ -6,7 +6,7 @@ A specialized CLIP encode for Krea 2 image editing.
 
 
 
-[workflow.json](https://github.com/nova452/ComfyUI-ConditioningKrea2Rebalance/blob/main/krea2_image_edit_workflow.json)
+[workflow.json](https://github.com/nova452/ComfyUI-ConditioningKrea2Rebalance/blob/main/krea2_edit_workflow.json)
 
 # ComfyUI-ConditioningKrea2Rebalance
 A conditioning optimizer with per layer weighting that offers IP-Adapter-like features for Krea 2 along with bypassing the built in quality diluation from the trained safety filter and also works as a means to unfilter the model.

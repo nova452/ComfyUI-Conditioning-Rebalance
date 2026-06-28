@@ -1,19 +1,19 @@
 {
-  "id": "9a98fb53-eaa2-4a4b-be37-2c3dc5c77a6f",
+  "id": "5f50ab2c-b077-4e14-a47b-a8d13e95699a",
   "revision": 0,
-  "last_node_id": 31,
-  "last_link_id": 49,
+  "last_node_id": 41028,
+  "last_link_id": 20859,
   "nodes": [
     {
-      "id": 10,
-      "type": "RandomNoise",
+      "id": 2,
+      "type": "LoadImage",
       "pos": [
-        -820,
-        650
+        -500,
+        -160
       ],
       "size": [
-        260,
-        100
+        290,
+        320
       ],
       "flags": {},
       "order": 0,
@@ -21,31 +21,36 @@
       "inputs": [],
       "outputs": [
         {
-          "name": "NOISE",
-          "type": "NOISE",
+          "name": "IMAGE",
+          "type": "IMAGE",
           "links": [
-            27
+            25
           ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
         }
       ],
       "properties": {
-        "Node name for S&R": "RandomNoise"
+        "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        7,
-        "randomize"
+        "121283862.png",
+        "image"
       ]
     },
     {
-      "id": 19,
-      "type": "PrimitiveStringMultiline",
+      "id": 34,
+      "type": "LoadImage",
       "pos": [
-        -600,
-        820
+        -180,
+        -160
       ],
       "size": [
-        430,
-        100
+        290,
+        320
       ],
       "flags": {},
       "order": 1,
@@ -53,36 +58,39 @@
       "inputs": [],
       "outputs": [
         {
-          "name": "STRING",
-          "type": "STRING",
+          "name": "IMAGE",
+          "type": "IMAGE",
           "links": [
-            26
+            58
           ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
         }
       ],
-      "title": "Prompt",
       "properties": {
-        "Node name for S&R": "PrimitiveStringMultiline"
+        "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "she is cooking in the kitchen. Cinematic movie style. Anime."
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
+        "HLkVm9CaIAAuzhd.jpg",
+        "image"
+      ]
     },
     {
       "id": 18,
       "type": "PreviewImage",
       "pos": [
-        -130,
-        440
+        -510,
+        230
       ],
       "size": [
-        520,
-        480
+        660,
+        510
       ],
       "flags": {},
-      "order": 4,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -104,20 +112,157 @@
       "widgets_values": []
     },
     {
+      "id": 10,
+      "type": "RandomNoise",
+      "pos": [
+        -820,
+        640
+      ],
+      "size": [
+        260,
+        100
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        8,
+        "randomize"
+      ]
+    },
+    {
+      "id": 35,
+      "type": "LoadImage",
+      "pos": [
+        140,
+        -160
+      ],
+      "size": [
+        290,
+        320
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            59
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "MWIII-ZOMBIES-BESTIARY-TOUT.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -420,
+        800
+      ],
+      "size": [
+        430,
+        100
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            26
+          ]
+        }
+      ],
+      "title": "Prompt",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "people shown running away from a giant zombie. Realism. Wasteland"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 36,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -420,
+        960
+      ],
+      "size": [
+        430,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            61
+          ]
+        }
+      ],
+      "title": "Negative Prompt",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "Anime"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
       "id": 20,
       "type": "d2a9cedf-4262-4bee-b199-047059768fce",
       "pos": [
         -820,
-        360
+        310
       ],
       "size": [
         260,
-        230
+        280
       ],
       "flags": {
         "collapsed": false
       },
-      "order": 3,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -135,6 +280,30 @@
           "name": "noise",
           "type": "NOISE",
           "link": 27
+        },
+        {
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 58
+        },
+        {
+          "name": "image3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 59
+        },
+        {
+          "name": "image4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "negative",
+          "shape": 7,
+          "type": "STRING",
+          "link": 61
         }
       ],
       "outputs": [
@@ -171,43 +340,6 @@
         ]
       },
       "widgets_values": []
-    },
-    {
-      "id": 2,
-      "type": "LoadImage",
-      "pos": [
-        -530,
-        450
-      ],
-      "size": [
-        290,
-        320
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            25
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "121283862.png",
-        "image"
-      ]
     }
   ],
   "links": [
@@ -242,6 +374,30 @@
       18,
       0,
       "IMAGE"
+    ],
+    [
+      58,
+      34,
+      0,
+      20,
+      3,
+      "IMAGE"
+    ],
+    [
+      59,
+      35,
+      0,
+      20,
+      4,
+      "IMAGE"
+    ],
+    [
+      61,
+      36,
+      0,
+      20,
+      6,
+      "STRING"
     ]
   ],
   "groups": [],
@@ -251,10 +407,10 @@
         "id": "d2a9cedf-4262-4bee-b199-047059768fce",
         "version": 1,
         "state": {
-          "lastGroupId": 0,
-          "lastNodeId": 31,
-          "lastLinkId": 49,
-          "lastRerouteId": 0
+          "lastGroupId": 12,
+          "lastNodeId": 41028,
+          "lastLinkId": 20859,
+          "lastRerouteId": 2
         },
         "revision": 0,
         "config": {},
@@ -262,10 +418,10 @@
         "inputNode": {
           "id": -10,
           "bounding": [
-            -838,
-            56,
+            -880,
+            70,
             128,
-            108
+            188
           ]
         },
         "outputNode": {
@@ -283,13 +439,13 @@
             "name": "image",
             "type": "IMAGE",
             "linkIds": [
-              47
+              51
             ],
             "localized_name": "image",
             "shape": 7,
             "pos": [
-              -734,
-              80
+              -776,
+              94
             ]
           },
           {
@@ -301,8 +457,8 @@
             ],
             "localized_name": "text",
             "pos": [
-              -734,
-              100
+              -776,
+              114
             ]
           },
           {
@@ -314,8 +470,56 @@
             ],
             "localized_name": "noise",
             "pos": [
-              -734,
-              120
+              -776,
+              134
+            ]
+          },
+          {
+            "id": "6f0d78f1-58b7-4b80-9560-1c5c4a5a0802",
+            "name": "image2",
+            "type": "IMAGE",
+            "linkIds": [
+              55
+            ],
+            "pos": [
+              -776,
+              154
+            ]
+          },
+          {
+            "id": "d32e24a7-93e0-4f57-923d-fc0c9a2a26f8",
+            "name": "image3",
+            "type": "IMAGE",
+            "linkIds": [
+              56
+            ],
+            "pos": [
+              -776,
+              174
+            ]
+          },
+          {
+            "id": "2293e9ea-77b6-4a5e-bff4-18ecf967d5d8",
+            "name": "image4",
+            "type": "IMAGE",
+            "linkIds": [
+              57
+            ],
+            "pos": [
+              -776,
+              194
+            ]
+          },
+          {
+            "id": "38f373b3-c9a9-41d5-bff7-d0076e695026",
+            "name": "negative",
+            "type": "STRING",
+            "linkIds": [
+              60
+            ],
+            "pos": [
+              -776,
+              214
             ]
           }
         ],
@@ -391,7 +595,7 @@
                 "name": "CLIP",
                 "type": "CLIP",
                 "links": [
-                  46
+                  50
                 ]
               }
             ],
@@ -434,89 +638,6 @@
             },
             "widgets_values": [
               "qwen_image_vae.safetensors"
-            ]
-          },
-          {
-            "id": 31,
-            "type": "Krea2EditRebalance",
-            "pos": [
-              -340,
-              -90
-            ],
-            "size": [
-              400,
-              340
-            ],
-            "flags": {},
-            "order": 11,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "clip",
-                "name": "clip",
-                "type": "CLIP",
-                "link": 46
-              },
-              {
-                "localized_name": "image1",
-                "name": "image1",
-                "shape": 7,
-                "type": "IMAGE",
-                "link": 47
-              },
-              {
-                "localized_name": "image2",
-                "name": "image2",
-                "shape": 7,
-                "type": "IMAGE",
-                "link": null
-              },
-              {
-                "localized_name": "image3",
-                "name": "image3",
-                "shape": 7,
-                "type": "IMAGE",
-                "link": null
-              },
-              {
-                "localized_name": "image4",
-                "name": "image4",
-                "shape": 7,
-                "type": "IMAGE",
-                "link": null
-              },
-              {
-                "localized_name": "text",
-                "name": "text",
-                "type": "STRING",
-                "widget": {
-                  "name": "text"
-                },
-                "link": 48
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "conditioning",
-                "name": "conditioning",
-                "type": "CONDITIONING",
-                "links": [
-                  49
-                ]
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "Krea2EditRebalance"
-            },
-            "widgets_values": [
-              "",
-              0.8,
-              0.5,
-              true,
-              "normal",
-              "normal",
-              "normal",
-              "normal"
             ]
           },
           {
@@ -564,6 +685,94 @@
             ]
           },
           {
+            "id": 32,
+            "type": "Krea2EditRebalance",
+            "pos": [
+              -340,
+              -50
+            ],
+            "size": [
+              400,
+              290
+            ],
+            "flags": {},
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 50
+              },
+              {
+                "localized_name": "negative",
+                "name": "negative",
+                "shape": 7,
+                "type": "STRING",
+                "link": 60
+              },
+              {
+                "localized_name": "image1",
+                "name": "image1",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": 51
+              },
+              {
+                "localized_name": "image2",
+                "name": "image2",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": 55
+              },
+              {
+                "localized_name": "image3",
+                "name": "image3",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": 56
+              },
+              {
+                "localized_name": "image4",
+                "name": "image4",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": 57
+              },
+              {
+                "localized_name": "text",
+                "name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "link": 53
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "conditioning",
+                "name": "conditioning",
+                "type": "CONDITIONING",
+                "links": [
+                  52,
+                  20855
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "Krea2EditRebalance"
+            },
+            "widgets_values": [
+              "",
+              "high",
+              "normal",
+              "normal",
+              "normal"
+            ]
+          },
+          {
             "id": 8,
             "type": "BasicGuider",
             "pos": [
@@ -588,7 +797,7 @@
                 "localized_name": "conditioning",
                 "name": "conditioning",
                 "type": "CONDITIONING",
-                "link": 49
+                "link": 52
               }
             ],
             "outputs": [
@@ -605,6 +814,52 @@
               "Node name for S&R": "BasicGuider"
             },
             "widgets_values": []
+          },
+          {
+            "id": 41023,
+            "type": "RebalanceCFG",
+            "pos": [
+              -390,
+              560
+            ],
+            "size": [
+              400,
+              210
+            ],
+            "flags": {},
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "conditioning_1",
+                "name": "conditioning_1",
+                "type": "CONDITIONING",
+                "link": 20855
+              },
+              {
+                "localized_name": "conditioning_2",
+                "name": "conditioning_2",
+                "type": "CONDITIONING",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "conditioning",
+                "name": "conditioning",
+                "type": "CONDITIONING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "RebalanceCFG"
+            },
+            "widgets_values": [
+              "0.000-0.125:1.50; 0.125-0.250:1.40; 0.250-0.375:1.20; 0.375-0.500:1.00; 0.500-0.625:0.80; 0.625-0.750:0.60; 0.750-0.875:0.40; 0.875-1.000:0.20",
+              "0.000-0.125:0.20; 0.125-0.250:0.40; 0.250-0.375:0.60; 0.375-0.500:0.80; 0.500-0.625:1.00; 0.625-0.750:1.20; 0.750-0.875:1.40; 0.875-1.000:1.50",
+              "gradual",
+              8
+            ]
           },
           {
             "id": 16,
@@ -722,7 +977,7 @@
                 "localized_name": "latent_image",
                 "name": "latent_image",
                 "type": "LATENT",
-                "link": 14
+                "link": 20859
               }
             ],
             "outputs": [
@@ -790,6 +1045,41 @@
             "widgets_values": []
           },
           {
+            "id": 21,
+            "type": "Reroute",
+            "pos": [
+              -550,
+              160
+            ],
+            "size": [
+              80,
+              30
+            ],
+            "flags": {},
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "",
+                "type": "*",
+                "link": 31
+              }
+            ],
+            "outputs": [
+              {
+                "name": "",
+                "type": "*",
+                "links": [
+                  53
+                ]
+              }
+            ],
+            "properties": {
+              "showOutputText": false,
+              "horizontal": false
+            }
+          },
+          {
             "id": 13,
             "type": "EmptyLatentImage",
             "pos": [
@@ -830,7 +1120,7 @@
                 "type": "LATENT",
                 "slot_index": 0,
                 "links": [
-                  14
+                  20859
                 ]
               }
             ],
@@ -844,41 +1134,6 @@
               1024,
               1
             ]
-          },
-          {
-            "id": 21,
-            "type": "Reroute",
-            "pos": [
-              -550,
-              160
-            ],
-            "size": [
-              80,
-              30
-            ],
-            "flags": {},
-            "order": 10,
-            "mode": 0,
-            "inputs": [
-              {
-                "name": "",
-                "type": "*",
-                "link": 31
-              }
-            ],
-            "outputs": [
-              {
-                "name": "",
-                "type": "*",
-                "links": [
-                  48
-                ]
-              }
-            ],
-            "properties": {
-              "showOutputText": false,
-              "horizontal": false
-            }
           }
         ],
         "groups": [],
@@ -922,14 +1177,6 @@
             "target_id": 9,
             "target_slot": 3,
             "type": "SIGMAS"
-          },
-          {
-            "id": 14,
-            "origin_id": 13,
-            "origin_slot": 0,
-            "target_id": 9,
-            "target_slot": 4,
-            "type": "LATENT"
           },
           {
             "id": 21,
@@ -988,36 +1235,84 @@
             "type": "INT"
           },
           {
-            "id": 46,
+            "id": 50,
             "origin_id": 4,
             "origin_slot": 0,
-            "target_id": 31,
+            "target_id": 32,
             "target_slot": 0,
             "type": "CLIP"
           },
           {
-            "id": 47,
+            "id": 51,
             "origin_id": -10,
             "origin_slot": 0,
-            "target_id": 31,
-            "target_slot": 1,
+            "target_id": 32,
+            "target_slot": 2,
             "type": "IMAGE"
           },
           {
-            "id": 48,
-            "origin_id": 21,
-            "origin_slot": 0,
-            "target_id": 31,
-            "target_slot": 5,
-            "type": "STRING"
-          },
-          {
-            "id": 49,
-            "origin_id": 31,
+            "id": 52,
+            "origin_id": 32,
             "origin_slot": 0,
             "target_id": 8,
             "target_slot": 1,
             "type": "CONDITIONING"
+          },
+          {
+            "id": 53,
+            "origin_id": 21,
+            "origin_slot": 0,
+            "target_id": 32,
+            "target_slot": 6,
+            "type": "STRING"
+          },
+          {
+            "id": 55,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 32,
+            "target_slot": 3,
+            "type": "IMAGE"
+          },
+          {
+            "id": 56,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 32,
+            "target_slot": 4,
+            "type": "IMAGE"
+          },
+          {
+            "id": 57,
+            "origin_id": -10,
+            "origin_slot": 5,
+            "target_id": 32,
+            "target_slot": 5,
+            "type": "IMAGE"
+          },
+          {
+            "id": 60,
+            "origin_id": -10,
+            "origin_slot": 6,
+            "target_id": 32,
+            "target_slot": 1,
+            "type": "STRING"
+          },
+          {
+            "id": 20855,
+            "origin_id": 32,
+            "origin_slot": 0,
+            "target_id": 41023,
+            "target_slot": 0,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 20859,
+            "origin_id": 13,
+            "origin_slot": 0,
+            "target_id": 9,
+            "target_slot": 4,
+            "type": "LATENT"
           }
         ],
         "extra": {}
@@ -1028,10 +1323,10 @@
   "extra": {
     "frontendVersion": "1.45.19",
     "ds": {
-      "scale": 0.8414855072463764,
+      "scale": 0.725552657480315,
       "offset": [
-        1386.1487485357397,
-        -41.92406956758028
+        1548.2002136183858,
+        421.945995531508
       ]
     }
   },
