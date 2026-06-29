@@ -4,6 +4,7 @@
 * Now supports negative prompting for stripping undesired effects
 
 <img width="1623" height="1227" alt="Screenshot (563)" src="https://github.com/user-attachments/assets/35ad346b-b4f7-4a83-8181-2891357d5dd0" />
+
 [workflow.json](https://github.com/nova452/ComfyUI-Conditioning-Rebalance/blob/main/krea2_image_edit_workflow.json)
 
 # Basic Advanced Setup Example
